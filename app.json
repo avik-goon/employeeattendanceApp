@@ -1,25 +1,25 @@
 {
   "expo": {
-    "name": "kosha_analytics_employee",
-    "slug": "kosha_analytics_employee",
-    "version": "1.0.0",
+    "name": "KoshaAnalytics Employee",
+    "slug": "kosha_Analytics_employee",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1e293b"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "package": "com.koshaanalytics.koshaanalyticsemployee",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
