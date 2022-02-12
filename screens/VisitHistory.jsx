@@ -15,9 +15,14 @@ const VisitHistory = () => {
     const [attendanceView, setAttendanceView] = useState({});
     const [loading, setLoading] = useState(false);
     useEffect(() => {
-        if (userData[0].id !== undefined) {
-            getAttendanceById(userData[0].id, setAttendanceRecord)
-
+        let isMounted = true;
+        if (isMounted) {
+            if (userData[0].id !== undefined) {
+                getAttendanceById(userData[0].id, setAttendanceRecord)
+            }
+        }
+        return () => {
+            isMounted = false;
         }
     }, [userData[0].id]);
     var attendanceMarker = {};

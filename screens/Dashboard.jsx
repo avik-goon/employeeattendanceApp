@@ -14,10 +14,13 @@ const Dashboard = () => {
     const [records, setRecords] = useState([]);
 
     useEffect(() => {
-        const observer = getLeaveRequest(setRecords, userData[0].id);
-
+        let observer = null;
+        let isMounted = true;
+        if (isMounted) {
+            observer = getLeaveRequest(setRecords, userData[0].id);
+        }
         return () => {
-            setRecords([]);
+            isMounted = false;
             observer.then((unsub) => unsub());
         };
     }, [userData]);

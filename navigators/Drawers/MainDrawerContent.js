@@ -21,16 +21,22 @@ const AdminDrawerContent = (props) => {
   const [location, setLocation] = React.useState({});
   const allLocations = useSelector(state => state.locations.locations);
   useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
+    let isMounted = true;
+    if (isMounted) {
+      (async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+          return;
+        }
 
-      let loc = await Location.getCurrentPositionAsync({ enableHighAccuracy: true });
-      setLocation(loc);
-    })();
+        let loc = await Location.getCurrentPositionAsync({ enableHighAccuracy: true });
+        setLocation(loc);
+      })();
+    }
+    return () => {
+      isMounted = false
+    }
   }, []);
 
   userData.forEach(element => {
@@ -90,7 +96,7 @@ const AdminDrawerContent = (props) => {
                     text: "Yes",
                     onPress: () => {
                       logOut(userData[0].id, logOutDate, logOutTime, attendanceDocID, allLocations, location).then((r) => {
-                        // console.log(r);
+
                         if (r !== -1) {
                           Alert.alert(
                             "Success",

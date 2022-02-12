@@ -33,7 +33,7 @@ import {
     CourierPrime_700Bold,
     CourierPrime_700Bold_Italic,
 } from '@expo-google-fonts/courier-prime';
-import Login from '../components/Login.js';
+import Login from '../components/Login';
 const LoginScreen = ({ navigation }) => {
     const [showModal, setShowModal] = React.useState(false)
     const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
@@ -145,7 +145,7 @@ function BrandIcon() {
 }
 function BrandHeading() {
     return (
-        <Heading size="lg" py="2" borderBottomWidth="0.5" borderBottomColor={useColorModeValue("#333", "#fff")}>Welcome to Kosha Analytics</Heading>
+        <Heading size="lg" py="2" borderBottomWidth="0.5" borderBottomColor={useColorModeValue("#333", "#fff")}>Welcome to Kohsa Analytics</Heading>
     )
 }
 export default LoginScreen;

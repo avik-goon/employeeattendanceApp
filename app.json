@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "KoshaAnalytics Employee",
-    "slug": "kosha_Analytics_employee",
-    "version": "2.0.0",
+    "name": "KohsaAnalytics Employee Attendance management Appp",
+    "slug": "kohsa_Analytics_employee",
+    "version": "2.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -13,7 +13,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -27,6 +29,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "# Expo RN App\nEmployee Attendance Management App\nThis app works based on geolocation,\nEmployees need to be present within 1000m radius to login into the app",
+    "githubUrl": "https://github.com/avik-goon/employeeattendanceApp"
   }
 }

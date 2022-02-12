@@ -3,6 +3,7 @@ import { Box, Divider, Heading, HStack, VStack } from 'native-base';
 import { Image } from 'react-native';
 const AttendanceDetailsView = ({ thisEmployee, attendanceDetails, brdrCLR }) => {
     //nsole.log(attendanceDetails);
+    const imageUrl = thisEmployee.image_url !== "" ? thisEmployee.image_url : 'https://static6.depositphotos.com/1007347/574/v/600/depositphotos_5749760-stock-illustration-football.jpg'
     return (
         <Box p={2} pl={'3'}>
             <Box py={3} mb={'2'}>
@@ -11,7 +12,7 @@ const AttendanceDetailsView = ({ thisEmployee, attendanceDetails, brdrCLR }) => 
             <HStack pl={'3'} alignItems={'center'} >
                 <VStack pr={'2.5'}>
                     <Box>
-                        {<Image source={{ uri: thisEmployee.image_url }} style={{ width: 50, height: 50, borderWidth: 2, borderRadius: 75, borderColor: brdrCLR }} alt='image' />}
+                        {<Image source={{ uri: imageUrl }} style={{ width: 50, height: 50, borderWidth: 2, borderRadius: 75, borderColor: brdrCLR }} alt='image' />}
                     </Box>
                 </VStack>
                 <VStack w={"80%"} space={2} pl={2} borderLeftWidth={1 / 2} borderLeftColor={'#06b6d4'} _dark={{ borderLeftColor: '#cffafe' }}  >

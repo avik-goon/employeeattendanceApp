@@ -32,22 +32,32 @@ const AddLoginLocation = () => {
     })
     const userData = useSelector(state => state.loggedInUser.user)
     useEffect(() => {
-        if (userData[0].id !== undefined) {
-            getLocations(setLocationDataState)
-            getExtraLoginLocation(setLoggedInLocations, userData[0].id, loginDate);
+        let isMounted = true;
+        if (isMounted) {
+            if (userData[0].id !== undefined) {
+                getLocations(setLocationDataState)
+                getExtraLoginLocation(setLoggedInLocations, userData[0].id, loginDate);
+            }
         }
+        return () => isMounted = false;
     }, [userData[0].id]);
     useEffect(() => {
-        (async () => {
-            let { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== 'granted') {
-                setErrorMsg('Permission to access location was denied');
-                return;
-            }
+        let isMounted = true;
+        if (isMounted) {
+            (async () => {
+                let { status } = await Location.requestForegroundPermissionsAsync();
+                if (status !== 'granted') {
+                    setErrorMsg('Permission to access location was denied');
+                    return;
+                }
 
-            let location = await Location.getCurrentPositionAsync({ enableHighAccuracy: true });
-            setLocation(location);
-        })();
+                let location = await Location.getCurrentPositionAsync({ enableHighAccuracy: true });
+                setLocation(location);
+            })();
+        }
+        return () => {
+            isMounted = false;
+        }
     }, []);
     // console.log(loggedInLocations);
     const [error, setError] = useState({});

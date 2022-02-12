@@ -1,5 +1,6 @@
 import db from "../config/db.config";
 import calculateDistance from "../GeoApi/CalculateDistance";
+import date from 'date-and-time';
 export default async function logOut(docID, date, time, attendanceDocID, allLocations, presentLocation) {
 
     var locationObject = calculateDistance("", presentLocation, allLocations)
@@ -28,9 +29,11 @@ export default async function logOut(docID, date, time, attendanceDocID, allLoca
 }
 
 async function isLogOutRecordExist(docID) {
+    const now = new Date();
+    const new_logOutDate = (date.format(now, 'DD/MM/YYYY'));
     const employeeRef = db.collection('employee').doc(docID);
     const doc = await employeeRef.get();
-    if (doc.data().logOutTime === "") {
-        return false
-    } else return true
+    if (doc.data().logOutDate === new_logOutDate) {
+        return true
+    } else return false
 }
